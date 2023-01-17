@@ -1,7 +1,22 @@
-var express = require("express");
-app = express();
-port = process.env.PORT || 3000;
+const express = require("express");
+require("dotenv").config();
 
-app.listen(port);
+const app = express();
 
-console.log(`Myanmar Postal Code API server started on port : ${port}`);
+const port = process.env.PORT || 3000;
+const username = process.env.USERNAME;
+const password = process.env.PASSWORD;
+
+app.get("/", (req, res) => {
+	console.log(req.url);
+	console.log(req.method);
+	res.send("Hello, world!");
+});
+
+app.listen(port, () => {
+	console.log(
+		`Myanmar Postal Code API server started on port : 
+        ${port}, ${username}, ${password}
+        http://localhost:${port}`
+	);
+});
